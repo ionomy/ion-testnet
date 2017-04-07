@@ -164,7 +164,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        nLastPOWBlock = 0x7fffffff;
+        nLastPOWBlock = 0x00000100;
     }
     virtual Network NetworkID() const { return CChainParams::TESTNET; }
 };
