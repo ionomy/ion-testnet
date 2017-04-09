@@ -547,7 +547,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 	if (TestNet()){
 		printf("TESTNET IS BROKEN! PLEASE REFRAIN FROM USE!\n"); // For visibility in terminals
 		LogPrintf("TESTNET IS BROKEN! PLEASE REFRAIN FROM USE!\n");
-        assert((int)1 == (int)2);
+//        assert((int)1 == (int)2);
 	}
 
     int64_t nStart;

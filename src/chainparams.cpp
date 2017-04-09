@@ -148,14 +148,18 @@ public:
         nProofOfWorkLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         nProofOfStakeLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
-		genesis = CreateGenesisBlock(1486629906, 2600259, 0x1e00ffff, 1, (1 * COIN));
+		genesis = CreateGenesisBlock(1491737471, 0, 0x1e00ffff, 1, (1 * COIN));
 		hashGenesisBlock = genesis.GetHash();
 		
         assert(hashGenesisBlock == uint256("0x0000005deb091119131413624780e4094b178172df0cf3a715ac1f5e0fe68b04"));
         assert(genesis.hashMerkleRoot == uint256("0x9b401afc7d346eff56b954a6c8ec24938f00d2f4e8b995c2b7b10101498a8459"));
-                
-        vFixedSeeds.clear();
-        vSeeds.clear();
+
+
+//		genesis = CreateGenesisBlock(1486045800, 28884498, 0x1e00ffff, 1, (1 * COIN));
+//		hashGenesisBlock = genesis.GetHash();
+	
+//        assert(hashGenesisBlock == uint256("0x0000004cf5ffbf2e31a9aa07c86298efb01a30b8911b80af7473d1114715084b"));
+//        assert(genesis.hashMerkleRoot == uint256("0x7af2e961c5262cb0411edcb7414ab7178133fc06257ceb47d349e4e5e35e2d40"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,97);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -164,9 +168,28 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        nLastPOWBlock = 0x00000100;
+        vFixedSeeds.clear();
+        vSeeds.clear();
+//		vSeeds.push_back(CDNSSeedData("seeder.baseserv.com", "main.seeder.baseserv.com"));
+//        vSeeds.push_back(CDNSSeedData("seeder.uksafedns.net", "main.seeder.uksafedns.net"));
+        
+        convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
+
+		nPoolMaxTransactions = 3;
+        strDarksendPoolDummyAddress = "iqbMeTpdFfxiNcWHn255T2TneJTrUECCBE";
+        nLastPOWBlock 	= 3000;
     }
+
+    virtual const CBlock& GenesisBlock() const { return genesis; }
     virtual Network NetworkID() const { return CChainParams::TESTNET; }
+
+    virtual const vector<CAddress>& FixedSeeds() const {
+        return vFixedSeeds;
+    }
+protected:
+    CBlock genesis;
+    vector<CAddress> vFixedSeeds;
+
 };
 static CTestNetParams testNetParams;
 
