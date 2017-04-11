@@ -136,33 +136,42 @@ public:
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
-        pchMessageStart[0] = 0x2f;
-        pchMessageStart[1] = 0xca;
-        pchMessageStart[2] = 0x4d;
-        pchMessageStart[3] = 0x3e;
+        pchMessageStart[0] = 0xdb;
+        pchMessageStart[1] = 0x86;
+        pchMessageStart[2] = 0xfc;
+        pchMessageStart[3] = 0x69;
         vAlertPubKey = ParseHex("");
         nDefaultPort = 27170;
         nRPCPort = 27171;
-//        strDataDir = "testnet";
+        strDataDir = "testnet";
    
         nProofOfWorkLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         nProofOfStakeLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
-		genesis = CreateGenesisBlock(1491737471, 0, 0x1e00ffff, 1, (1 * COIN));
-		hashGenesisBlock = genesis.GetHash();
-        LogPrintf("chainparams::CTestNetParams hashGenesisBlock: [%s] genesis.hashMerkleRoot: [%s]\n", hashGenesisBlock.ToString().c_str(), genesis.hashMerkleRoot.ToString().c_str());
+	genesis = CreateGenesisBlock(1491737471, 1603027, 0x1e00ffff, 1, (1 * COIN));
+//        genesis = CreateGenesisBlock(1491737471, 0, 0x1e00ffff, 1, (1 * COIN));
+        
+/*
+        uint256 hashTarget = uint256().SetCompact(genesis.nBits);
+        while (genesis.GetHash() > hashTarget) {
+                ++genesis.nNonce;
+		LogPrintf("+");  
+              if (genesis.nNonce == 0) { 
+			++genesis.nTime; 
+			LogPrintf("Chainparams::CTestNetParams ++genesis.nTime: [%d]\n", genesis.nTime);
+		}
+        }
+*/
+	hashGenesisBlock = genesis.GetHash();
+/*        LogPrintf("chainparams::CTestNetParams hashGenesisBlock: [%s] genesis.hashMerkleRoot: [%s] genesis.nNonce: [%d] genesis.nTime: [%d]\n", 
+		hashGenesisBlock.ToString().c_str(), 
+		genesis.hashMerkleRoot.ToString().c_str(), 
+		genesis.nNonce,
+		genesis.nTime);
+*/
 //	2017-04-09 12:16:45 SetBestChain: new best=d1a249fa843dd6ef0c962fc86a8850ce22313fd9c82abfe49f348c89ac0bd81c  height=0  trust=0000000000000000000000000000000000000000000000000000000001000100  blocktrust=16777472  date=04/09/17 11:31:11
-	assert(hashGenesisBlock == uint256("0xd1a249fa843dd6ef0c962fc86a8850ce22313fd9c82abfe49f348c89ac0bd81c"));		
+	assert(hashGenesisBlock == uint256("0x0000002bed128b6b2a62bd8edd4e6f8a414eac38e256aa0194adb8c93fe18132"));		
 	assert(genesis.hashMerkleRoot == uint256("0x24c7b9bada3984f99ec9072672d3f7180af711b5eed5b82b321848b973b4a41e"));
-//        assert(hashGenesisBlock == uint256("0x0000005deb091119131413624780e4094b178172df0cf3a715ac1f5e0fe68b04"));
-//        assert(genesis.hashMerkleRoot == uint256("0x9b401afc7d346eff56b954a6c8ec24938f00d2f4e8b995c2b7b10101498a8459"));
-
-
-//		genesis = CreateGenesisBlock(1486045800, 28884498, 0x1e00ffff, 1, (1 * COIN));
-//		hashGenesisBlock = genesis.GetHash();
-	
-//        assert(hashGenesisBlock == uint256("0x0000004cf5ffbf2e31a9aa07c86298efb01a30b8911b80af7473d1114715084b"));
-//        assert(genesis.hashMerkleRoot == uint256("0x7af2e961c5262cb0411edcb7414ab7178133fc06257ceb47d349e4e5e35e2d40"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,97);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -176,11 +185,11 @@ public:
 //		vSeeds.push_back(CDNSSeedData("seeder.baseserv.com", "main.seeder.baseserv.com"));
 //        vSeeds.push_back(CDNSSeedData("seeder.uksafedns.net", "main.seeder.uksafedns.net"));
         
-        convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
+        convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
-		nPoolMaxTransactions = 3;
-        strDarksendPoolDummyAddress = "iqbMeTpdFfxiNcWHn255T2TneJTrUECCBE";
-        nLastPOWBlock 	= 3000;
+	nPoolMaxTransactions = 3;
+        strDarksendPoolDummyAddress = "gCJDCcmcVZcfnwAZdEt7dg5s5jjAbDp9dZdhXAmP5NM";
+        nLastPOWBlock 	= 300;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
