@@ -182,8 +182,8 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-//		vSeeds.push_back(CDNSSeedData("seeder.baseserv.com", "main.seeder.baseserv.com"));
-//        vSeeds.push_back(CDNSSeedData("seeder.uksafedns.net", "main.seeder.uksafedns.net"));
+	vSeeds.push_back(CDNSSeedData("seeder.baseserv.com", "testnet.seeder.baseserv.com"));
+        vSeeds.push_back(CDNSSeedData("seeder.uksafedns.net", "testnet.seeder.uksafedns.net"));
         
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
