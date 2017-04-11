@@ -149,27 +149,9 @@ public:
         nProofOfStakeLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
 	genesis = CreateGenesisBlock(1491737471, 1603027, 0x1e00ffff, 1, (1 * COIN));
-//        genesis = CreateGenesisBlock(1491737471, 0, 0x1e00ffff, 1, (1 * COIN));
         
-/*
-        uint256 hashTarget = uint256().SetCompact(genesis.nBits);
-        while (genesis.GetHash() > hashTarget) {
-                ++genesis.nNonce;
-		LogPrintf("+");  
-              if (genesis.nNonce == 0) { 
-			++genesis.nTime; 
-			LogPrintf("Chainparams::CTestNetParams ++genesis.nTime: [%d]\n", genesis.nTime);
-		}
-        }
-*/
 	hashGenesisBlock = genesis.GetHash();
-/*        LogPrintf("chainparams::CTestNetParams hashGenesisBlock: [%s] genesis.hashMerkleRoot: [%s] genesis.nNonce: [%d] genesis.nTime: [%d]\n", 
-		hashGenesisBlock.ToString().c_str(), 
-		genesis.hashMerkleRoot.ToString().c_str(), 
-		genesis.nNonce,
-		genesis.nTime);
-*/
-//	2017-04-09 12:16:45 SetBestChain: new best=d1a249fa843dd6ef0c962fc86a8850ce22313fd9c82abfe49f348c89ac0bd81c  height=0  trust=0000000000000000000000000000000000000000000000000000000001000100  blocktrust=16777472  date=04/09/17 11:31:11
+	
 	assert(hashGenesisBlock == uint256("0x0000002bed128b6b2a62bd8edd4e6f8a414eac38e256aa0194adb8c93fe18132"));		
 	assert(genesis.hashMerkleRoot == uint256("0x24c7b9bada3984f99ec9072672d3f7180af711b5eed5b82b321848b973b4a41e"));
 
