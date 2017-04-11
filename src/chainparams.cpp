@@ -142,7 +142,7 @@ public:
         pchMessageStart[3] = 0x69;
         vAlertPubKey = ParseHex("");
         nDefaultPort = 27170;
-        nRPCPort = 27171;
+        nRPCPort = 27175;
         strDataDir = "testnet";
    
         nProofOfWorkLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
